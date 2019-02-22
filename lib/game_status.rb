@@ -1,4 +1,5 @@
 # Define your WIN_COMBINATIONS constant
+require 'pry'
 
 
 WIN_COMBINATIONS = [
@@ -13,16 +14,18 @@ WIN_COMBINATIONS = [
  ]
 
 def won?(board)
-  
-  WIN_COMBINATIONS.each do |combos|
+   
+  WIN_COMBINATIONS.each do |combos|    
+    win_index_1 = combos[0]
+    win_index_2 = combos[1]
+    win_index_3 = combos[2]
 
-    if combos[0] && combos[1] && combos[2] == "X"
+    if board[win_index_1] == "X" && board[win_index_2] == "X" && board[win_index_3] == "X"
       return combos
-    elsif combos[0] && combos[1] && combos[2]  == "O"
+    elsif board[win_index_1] == "O" && board[win_index_2] == "O" && board[win_index_3] == "O"
       return combos
-    else
-      return false
     end
-    
   end
+  
+  return false
 end
